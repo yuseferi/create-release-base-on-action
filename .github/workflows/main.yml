@@ -10,14 +10,20 @@ on:
         - bar
         - baz
      country:
-        type: multi-choice
+        type: choice
         description: select environment
         required: true
         options:
         - foo
         - bar
         - baz
-        
+     multi_item:
+        type: multi-choice
+        description: select packages
+        options: 
+        - go-service1
+        - go-service2
+        - py-service1
         
         
 
