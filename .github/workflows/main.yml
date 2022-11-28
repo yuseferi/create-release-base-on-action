@@ -10,7 +10,7 @@ on:
         - bar
         - baz
      country:
-        type: choice
+        type: multi-choice
         description: select environment
         required: true
         options:
