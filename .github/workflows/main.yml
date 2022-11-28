@@ -1,14 +1,25 @@
 on: 
   workflow_dispatch:
     inputs:
-      environment:
-        description: 'Define env name'     
+     region:
+        type: choice
+        description: select region
         required: true
-        default: 'prod'
-      branch:
-        description: 'Define branch name'     
+        options:
+        - foo
+        - bar
+        - baz
+     country:
+        type: choice
+        description: select environment
         required: true
-        default: 'master'
+        options:
+        - foo
+        - bar
+        - baz
+        
+        
+        
 
 name: Create Release
 
@@ -25,7 +36,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
         with:
-          tag_name: ${{ github.ref }}
+          tag_name: "${{ github.event.inputs.region }}_${{ github.event.inputs.country }}"
           release_name: Release ${{ github.ref }}
           body: |
             Changes in this Release
